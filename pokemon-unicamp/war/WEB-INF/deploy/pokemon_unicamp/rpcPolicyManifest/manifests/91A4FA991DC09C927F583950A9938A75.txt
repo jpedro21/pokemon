@@ -1,0 +1,2 @@
+serviceClass: pokemon.unicamp.client.GreetingService
+path: 3BF3E6AF4D8B8D25C279E986ED2AA776.gwt.rpc

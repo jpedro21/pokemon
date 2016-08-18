@@ -1,0 +1,199 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://pokemon-unicamp.appspot.com/_ah/api",
+  "name" : "pokemonendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://pokemon-unicamp.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "unicamp.pokemon",
+  "ownerName" : "unicamp.pokemon",
+  "packagePath" : "server",
+  "methods" : {
+    "pokemonendpoint.removePokemon" : {
+      "path" : "pokemon/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "pokemon.unicamp.server.PokemonEndpoint.removePokemon",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "pokemonendpoint.listPokemon" : {
+      "path" : "pokemon",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "pokemon.unicamp.server.PokemonEndpoint.listPokemon",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pokemonendpoint.getPokemon" : {
+      "path" : "pokemon/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "pokemon.unicamp.server.PokemonEndpoint.getPokemon",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pokemonendpoint.insertPokemon" : {
+      "path" : "pokemon",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "pokemon.unicamp.server.PokemonEndpoint.insertPokemon",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pokemonendpoint.updatePokemon" : {
+      "path" : "pokemon",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "pokemon.unicamp.server.PokemonEndpoint.updatePokemon",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Pokemon" : {
+        "id" : "CollectionResponse_Pokemon",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Pokemon"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Pokemon" : {
+        "id" : "Pokemon",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "health" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "combatPower" : {
+            "type" : "integer"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "pokemon.unicamp.server.PokemonEndpoint.removePokemon" : {
+      },
+      "pokemon.unicamp.server.PokemonEndpoint.listPokemon" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Pokemon"
+        }
+      },
+      "pokemon.unicamp.server.PokemonEndpoint.getPokemon" : {
+        "response" : {
+          "$ref" : "Pokemon"
+        }
+      },
+      "pokemon.unicamp.server.PokemonEndpoint.insertPokemon" : {
+        "request" : {
+          "$ref" : "Pokemon"
+        },
+        "response" : {
+          "$ref" : "Pokemon"
+        }
+      },
+      "pokemon.unicamp.server.PokemonEndpoint.updatePokemon" : {
+        "request" : {
+          "$ref" : "Pokemon"
+        },
+        "response" : {
+          "$ref" : "Pokemon"
+        }
+      }
+    }
+  }
+}

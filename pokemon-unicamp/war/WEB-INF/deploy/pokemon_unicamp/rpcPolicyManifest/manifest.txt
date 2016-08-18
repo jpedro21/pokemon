@@ -1,0 +1,3 @@
+# Module pokemon_unicamp
+# RPC service class, partial path of RPC policy file
+pokemon.unicamp.client.GreetingService, 3BF3E6AF4D8B8D25C279E986ED2AA776.gwt.rpc
